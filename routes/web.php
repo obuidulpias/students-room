@@ -25,6 +25,14 @@ Route::post('/registration',[
     'uses' => 'StudentController@studentSignUp',
     'as'   => 'student-sign-up'
 ]);
+Route::post('/login',[
+    'uses' => 'StudentController@studentloginCheck',
+    'as'   => 'student-login'
+]);
+Route::post('/logout',[
+    'uses' => 'StudentController@studentlogout',
+    'as'   => 'student-logout'
+]);
 Route::get('/student-information',[
     'uses' => 'StudentController@mainContent',
     'as'   => 'main-content'

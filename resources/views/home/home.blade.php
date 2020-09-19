@@ -129,21 +129,23 @@
                     <div class="row">
                         <h3>You have to login. If you are not registered yet please register first. </h3>
                         <hr/>
+                        <!--
                         <div class="col-xs-6">
                             <a href="#" class="active" id="login-form-link">Login</a>
                         </div>
                         <div class="col-xs-6">
                             <a href="#" id="register-form-link">Register</a>
                         </div>
+                        --!>
                     </div>
                     <hr>
                 </div>
                 <div class="panel-body">
                     <div class="row">
                         <div class="col-lg-12">
-                            <form id="login-form" action="https://phpoll.com/login/process" method="post" role="form" style="display: block;">
-                                <div class="form-group">
-                                    <input type="email" name="email" id="email" tabindex="1" class="form-control" placeholder="Email Address" value="">
+                            {!! Form::open(['route'=>'student-login', 'method'=>'POST' ]) !!}
+                            <div class="form-group">
+                                    <input type="email" name="email_address" id="email_address" tabindex="1" class="form-control" placeholder="Email Address" value="">
                                 </div>
                                 <div class="form-group">
                                     <input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Password">
@@ -157,8 +159,9 @@
                                     </div>
                                 </div>
 
-                            </form>
-                            {!! Form::open(['route'=>'student-sign-up', 'method'=>'POST']) !!}
+                            {!! Form::close() !!}
+
+                            {!! Form::open(['route'=>'student-sign-up', 'method'=>'POST' ]) !!}
                             <div class="form-group">
                                     <input type="text" name="first_name" id="first_name" tabindex="1" class="form-control" placeholder="First Name" value="">
                                 </div>

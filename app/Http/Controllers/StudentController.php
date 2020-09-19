@@ -12,9 +12,9 @@ class StudentController extends Controller
         return view('home.home');
     }
     public function studentSignUp(Request $request) {
-        //$this->validate($request, [
-         //   'email_address' => 'email|unique:students,email_address'
-        //]);
+        $this->validate($request, [
+            'email_address' => 'email|unique:students,email_address'
+        ]);
 
         $student = new Student();
         $student->first_name = $request->first_name;
@@ -36,6 +36,25 @@ class StudentController extends Controller
         //});
 
         return redirect('student-information');
+    }
+    public function studentLoginCheck(Request $request) {
+        $student = Student::where('email_address', $request->email_address)->first();
+
+
+        if(password_verify($request->password, $student->password)) {
+            Session::put('studentId', $student->id);
+            Session::put('studentName', $student->first_name.' '.$student->last_name);
+
+            return redirect('/student-information');
+        } else {
+            return redirect('/')->with('message', 'Please insert valid password...');
+        }
+
+    }
+    public function studentlogout() {
+        Session::forget('studentId');
+        Session::forget('studentName');
+        return redirect('/');
     }
     public function mainContent() {
         return view('main.main-content');
