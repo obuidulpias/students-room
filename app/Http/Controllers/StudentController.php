@@ -29,12 +29,7 @@ class StudentController extends Controller
         Session::put('studentId', $studentId);
         Session::put('studentName', $student->first_name.' '.$student->last_name);
 
-        //$data = $customer->toArray();
-        //Mail::send('front-end.mails.confirmation-mail', $data, function ($message) use ($data) {
-        // $message->to($data['email_address']);
-        // $message->subject('confirmation_mail');
-        //});
-
+        
         return redirect('student-information');
     }
     public function studentLoginCheck(Request $request) {
@@ -47,7 +42,7 @@ class StudentController extends Controller
 
             return redirect('/student-information');
         } else {
-            return redirect('/')->with('message', 'Please insert valid password...');
+            return redirect('/')->with('message', '------Please insert valid password and email address-----');
         }
 
     }
@@ -59,4 +54,17 @@ class StudentController extends Controller
     public function mainContent() {
         return view('main.main-content');
     }
+    public function rdsContent() {
+        return view('rds.rds');
+    }
+    public function studentInfoContent() {
+        $student = Student::find(session::get('studentId'));
+        //return $student;
+        return view('profile.student-info', ['student'=>$student]);
+    }
+    public function idCardInfo() {
+        $student = Student::find(session::get('studentId'));
+        return view('profile.id', ['student'=>$student]);
+    }
+
 }

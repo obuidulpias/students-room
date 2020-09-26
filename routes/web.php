@@ -37,3 +37,15 @@ Route::get('/student-information',[
     'uses' => 'StudentController@mainContent',
     'as'   => 'main-content'
 ]);
+Route::get('/rds',[
+    'uses' => 'StudentController@rdsContent',
+    'as'   => 'rds-content'
+]);
+Route::get('/student/info',[
+    'uses' => 'StudentController@studentInfoContent',
+    'as'   => 'student-info'
+]);
+Route::get('/id-card',[
+    'uses' => 'StudentController@idCardInfo',
+    'as'   => 'id-card'
+]);
