@@ -1,7 +1,7 @@
-### Student Management System
+### Student Information System
 This is a simple web-based software written in PHP and Laravel Framework. This was specifically written for university or educational organization.
 
-### Feature of Student Management System
+### Feature of Student Information System
 
 - [ ] Add Student Information
 - [ ] Login and Register
