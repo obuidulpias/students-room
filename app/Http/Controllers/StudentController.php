@@ -29,7 +29,7 @@ class StudentController extends Controller
         Session::put('studentId', $studentId);
         Session::put('studentName', $student->first_name.' '.$student->last_name);
 
-        
+
         return redirect('student-information');
     }
     public function studentLoginCheck(Request $request) {
@@ -65,6 +65,35 @@ class StudentController extends Controller
     public function idCardInfo() {
         $student = Student::find(session::get('studentId'));
         return view('profile.id', ['student'=>$student]);
+    }
+    public  function editStudentInfo() {
+        $student = Student::find(session::get('studentId'));
+        //return $student;
+        return view('profile.edit-student-info', ['student'=>$student]);
+    }
+    public function updateStudentInfo(Request $request) {
+        $student = Student::find(session::get('studentId'));
+
+        $student->first_name = $request->first_name;
+        $student->last_name = $request->last_name;
+        $student->student_id = $request->student_id;
+        $student->phone_number = $request->phone_number;
+        //return $student;
+        $student->save();
+
+        return redirect('/student/info')->with('message', '---------Student Info Updated Successfully---------');
+    }
+
+    public function editPassword() {
+        $student = Student::find(session::get('studentId'));
+        return view('profile.edit-password', ['student'=>$student]);
+    }
+    public function updatePassword(Request $request) {
+        $student = Student::find(session::get('studentId'));
+        $student->password = bcrypt($request->password);
+        $student->save();
+        return redirect('/student/info')->with('message', '---------Password Updated Successfully---------');
+
     }
 
 }

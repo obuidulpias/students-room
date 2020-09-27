@@ -49,3 +49,21 @@ Route::get('/id-card',[
     'uses' => 'StudentController@idCardInfo',
     'as'   => 'id-card'
 ]);
+
+Route::get('/edit/student/info',[
+    'uses' => 'StudentController@editStudentInfo',
+    'as'   => 'edit-student-info'
+]);
+Route::post('/update/student/info',[
+    'uses' => 'StudentController@updateStudentInfo',
+    'as'   => 'update-student-info'
+]);
+Route::get('/edit/password',[
+    'uses' => 'StudentController@editPassword',
+    'as'   => 'edit-password'
+]);
+
+Route::post('/update/password',[
+    'uses' => 'StudentController@updatePassword',
+    'as'   => 'update-Password'
+]);

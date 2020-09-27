@@ -5,17 +5,16 @@
 @endsection
 
 @section('body')
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+
 
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-6 col-md-offset-1">
             <div class="panel panel-default">
                 <div class="panel-heading">
 
                     <div class="panel-body">
                         <h3 class="text-center text-success">Hello {{ $student->last_name }} ,</h3>
+                        <h3 class="text-center text-success">{{ Session::get('message') }}</h3>
                         <table class="table table-borderd" >
                             <tr class="bg-success">
                                 <th>ID No</th>
@@ -36,10 +35,10 @@
                             <tr class="bg-success">
                                 <th></th>
                                 <td>
-                                    <a href="" class="btn btn-success btn-xs" title="Edit Student Info">
+                                    <a href="{{ route('edit-student-info') }}" class="btn btn-success btn-xs" title="Edit Student Info">
                                         <span class="glyphicon glyphicon-edit" ></span>
                                     </a>
-                                    <a href="" class="btn btn-danger btn-xs" title="Password Change">
+                                    <a href="{{ route('edit-password') }}" class="btn btn-danger btn-xs" title="Password Change">
                                         <span class="glyphicon glyphicon-edit" ></span>
                                     </a>
                                 </td>

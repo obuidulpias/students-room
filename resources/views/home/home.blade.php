@@ -144,14 +144,14 @@
                     <div class="row">
                         <div class="col-lg-12">
                             {!! Form::open(['route'=>'student-login', 'method'=>'POST', 'id'=>'login-form', 'role'=>'form' ]) !!}
-                            <div class="form-group">
+                                <div class="form-group{{ $errors->has('email') ? ' has-error' : '' }}">
                                     <input type="email" name="email_address" id="email_address" tabindex="1" class="form-control" placeholder="Email Address" value="">
                                 </div>
                                 <div class="form-group">
                                     <input type="password" name="password" id="password" tabindex="2" class="form-control" placeholder="Password">
                                 </div>
 
-                                <div class="form-group">
+                                <div class="form-group{{ $errors->has('password') ? ' has-error' : '' }}">
                                     <div class="row">
                                         <div class="col-sm-6 col-sm-offset-3">
                                             <input type="submit" name="login-submit" id="login-submit" tabindex="4" class="form-control btn btn-login" value="Log In">
